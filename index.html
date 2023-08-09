@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #but{
+            border:none;
+            padding:1em 2em;
+            color:white;
+            border-radius:10px;
+            background:rgb(0, 153, 255);
+            font-size:2em;
+            text-transform: uppercase;
+            font-weight:bold;
+            position:relative;
+        }
+        #but:active
+        {
+            background:linear-gradient(to bottom right,rgb(0, 153, 255),rgb(0, 107, 179));
+            transform:scale(0.99);
+        }
+        #pop{
+            font-size:1em;
+            position:absolute;
+            top:110%;
+            left:0;
+            z-index:100;
+            border-radius:10px;
+            background:grey;
+            width:100%;
+            height:100%;
+            display:grid;
+            place-content: center;
+            color:white;
+            width:0;
+            height:0;
+            overflow:hidden;
+            transition:0.2s width, 0.2s height;
+        }
+        .bounce
+        {
+            animation-name:bounce;
+            animation-timing-function:cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation-duration: 0.3s;
+            animation-iteration-count: 1;
+        }
+        @keyframes bounce {
+            0%
+            {
+                width:0;
+            height:0;
+            }
+            66%
+            {
+                width:110%;
+            height:110%;
+            }
+            100%
+            {
+                width:100%;
+            height:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <button id="but" onclick="fun(this)">click <span id="pop">hello</span></button>
+</div>
+<script>
+    function fun(but)
+    {
+      
+    const bounce=document.getElementById("pop");
+    bounce.classList.toggle("bounce");
+    if(bounce.classList.contains("bounce"))
+    {
+        bounce.style.width="100%";
+        bounce.style.height="100%";
+        
+    }
+    else
+    {
+        bounce.style.width="0%";
+        bounce.style.height="0%";
+    
+    }
+    }
+</script>
+</body>
+</html>
